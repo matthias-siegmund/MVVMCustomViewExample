@@ -5,5 +5,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CustomViewState(
-        val title: String?
+        val hexCode: String?
 ): MvvmCustomViewState

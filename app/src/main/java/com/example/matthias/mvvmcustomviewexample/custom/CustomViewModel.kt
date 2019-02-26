@@ -16,11 +16,15 @@ class CustomViewModel: MvvmCustomViewModel<CustomViewState> {
 
     fun getLiveData(): LiveData<String?> = liveData
 
-    fun onButtonClick() {
-        liveData.value = "Changed by ViewModel"
+    fun onRedButtonClick() {
+        liveData.value = "#FF0000"
+    }
+
+    fun onBlueButtonClick() {
+        liveData.value = "#0000FF"
     }
 
     private fun restore(state: CustomViewState?) {
-        liveData.value = state?.title
+        liveData.value = state?.hexCode
     }
 }
