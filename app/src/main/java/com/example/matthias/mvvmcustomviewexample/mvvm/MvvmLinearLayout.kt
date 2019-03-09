@@ -12,7 +12,8 @@ abstract class MvvmLinearLayout<V: MvvmCustomViewState, T: MvvmCustomViewModel<V
 ): LinearLayout(context, attributeSet), MvvmCustomView<V, T> {
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        onLifecycleOwnerAttached(context as LifecycleOwner)
+        val lifecycleOwner = context as? LifecycleOwner ?: throw LifecycleOwnerNotFoundException()
+        onLifecycleOwnerAttached(lifecycleOwner)
     }
 
     override fun onSaveInstanceState() = MvvmCustomViewStateWrapper(super.onSaveInstanceState(), viewModel.state)
